@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - My Weight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0a0a0b;
+            --color-bg-secondary: #111113;
+            --color-text: #f5f5f7;
+            --color-text-secondary: #8e8e93;
+            --color-accent: #00ff88;
+            --color-accent-secondary: #00d4ff;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --font-display: 'Syne', sans-serif;
+            --font-serif: 'Instrument Serif', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-display);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .app-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .lang-switch a {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--color-border);
+            border-radius: 2rem;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .lang-switch a:hover,
+        .lang-switch a.active {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .lang-switch a.active {
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem;
+            color: var(--color-text);
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 2rem 0 0.75rem;
+            color: var(--color-accent);
+        }
+
+        p {
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            color: var(--color-text);
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        ul li, ol li {
+            color: var(--color-text-secondary);
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        ol {
+            counter-reset: item;
+        }
+
+        ol li::before {
+            content: counter(item) ".";
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--color-text);
+        }
+
+        .faq-item {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .faq-question::before {
+            content: 'Q';
+            background: var(--color-accent);
+            color: var(--color-bg);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .faq-answer {
+            color: var(--color-text-secondary);
+            padding-left: 2.25rem;
+        }
+
+        .contact-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .contact-card h3 {
+            margin-top: 0;
+        }
+
+        .contact-email {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+            color: var(--color-bg);
+            text-decoration: none;
+            border-radius: 2rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .contact-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="app-icon">⚖️</div>
+            <h1>Support</h1>
+            <p class="subtitle">My Weight - Weight Tracking App</p>
+            <div class="lang-switch">
+                <a href="support.html" class="active">🇬🇧 English</a>
+                <a href="support_pl.html">🇵🇱 Polski</a>
+            </div>
+        </header>
+
+        <main>
+            <h2>Getting Started</h2>
+            <p>My Weight is a simple and intuitive app designed to help you track your weight over time. Here's how to get started:</p>
+            
+            <ol>
+                <li><strong>Add your first entry</strong> — Tap the "+" button to record your current weight</li>
+                <li><strong>Set your goal</strong> — Define your target weight in the settings</li>
+                <li><strong>Track regularly</strong> — For best results, weigh yourself at the same time each day</li>
+                <li><strong>View your progress</strong> — Check the chart to see your weight trends over time</li>
+            </ol>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I add a new weight entry?</div>
+                <p class="faq-answer">Tap the "+" button on the main screen. Enter your weight and optionally add a note. The current date and time will be recorded automatically.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I edit or delete an entry?</div>
+                <p class="faq-answer">Yes! Swipe left on any entry in the history list to reveal edit and delete options. You can also tap on an entry to view details and make changes.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Where is my data stored?</div>
+                <p class="faq-answer">All your data is stored locally on your device only. We do not collect or store any of your personal information on external servers. See our <a href="privacyPolicy.html">Privacy Policy</a> for more details.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Will I lose my data if I delete the app?</div>
+                <p class="faq-answer">Yes, since all data is stored locally on your device, uninstalling the app will permanently delete all your weight entries and settings.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I change the weight units?</div>
+                <p class="faq-answer">Yes! Go to Settings and select your preferred unit (kg or lbs). All your existing entries will be automatically converted.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How can I export my data?</div>
+                <p class="faq-answer">Go to Settings → Export Data. You can export your weight history as a CSV file that can be opened in Excel or other spreadsheet applications.</p>
+            </div>
+
+            <h2>Tips for Accurate Tracking</h2>
+            <ul>
+                <li>Weigh yourself at the same time each day, preferably in the morning</li>
+                <li>Use the same scale for consistent measurements</li>
+                <li>Wear similar clothing (or none) when weighing</li>
+                <li>Don't be discouraged by daily fluctuations — focus on the overall trend</li>
+                <li>Weekly averages are more reliable than daily readings</li>
+            </ul>
+
+            <h2>Contact Us</h2>
+            <div class="contact-card">
+                <h3>Need more help?</h3>
+                <p>If you couldn't find the answer to your question, feel free to reach out to us. We're here to help!</p>
+                <a href="mailto:support@swayko.com" class="contact-email">support@swayko.com</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="privacyPolicy.html">Privacy Policy</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+

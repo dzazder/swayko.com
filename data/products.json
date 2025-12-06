@@ -1,0 +1,22 @@
+{
+    "products": [
+        {
+            "id": "myweighttracking-app",
+            "name": {
+                "pl": "My Weight - Tracking",
+                "en": "Moja Waga - Tracker"
+            },
+            "description": {
+                "pl": "Aplikacja mobilna do śledzenia masy ciała i zdrowia.",
+                "en": "Mobile app for tracking body weight and health. "
+            },
+            "category": "mobile",
+            "technologies": ["Swift"],
+            "icon": "🏋️",
+            "image": "",
+            "url": "",
+            "featured": true
+        }
+    ]
+}
+
