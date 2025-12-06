@@ -63,12 +63,43 @@ document.addEventListener('DOMContentLoaded', () => {
     // Contact Form
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            alert(window.i18n.getCurrentLang() === 'pl' 
-                ? 'Dziękujemy za wiadomość! Skontaktujemy się wkrótce.' 
-                : 'Thank you for your message! We\'ll get back to you soon.');
-            contactForm.reset();
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = window.i18n.getCurrentLang() === 'pl' ? 'Wysyłanie...' : 'Sending...';
+            
+            const formData = new FormData(contactForm);
+            
+            try {
+                const response = await fetch('send-mail.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert(window.i18n.getCurrentLang() === 'pl' 
+                        ? 'Dziękujemy za wiadomość! Skontaktujemy się wkrótce.' 
+                        : 'Thank you for your message! We\'ll get back to you soon.');
+                    contactForm.reset();
+                } else {
+                    alert(window.i18n.getCurrentLang() === 'pl' 
+                        ? 'Wystąpił błąd podczas wysyłania. Spróbuj ponownie.' 
+                        : 'An error occurred while sending. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert(window.i18n.getCurrentLang() === 'pl' 
+                    ? 'Wystąpił błąd podczas wysyłania. Spróbuj ponownie.' 
+                    : 'An error occurred while sending. Please try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
         });
     }
     
