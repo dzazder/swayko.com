@@ -11,10 +11,78 @@
                 "en": "Mobile app for tracking body weight and health. "
             },
             "category": "mobile",
-            "technologies": ["Swift"],
+            "technologies": ["Swift", "iOS"],
             "icon": "🏋️",
             "image": "",
             "url": "",
+            "featured": true
+        },
+        {
+            "id": "brewing-calculator",
+            "name": {
+                "pl": "Kalkulator Piwowarski",
+                "en": "Brewing Calculator"
+            },
+            "description": {
+                "pl": "Zestaw kalkulatorów do piwowarstwa.",
+                "en": "Set of calculators for brewing."
+            },
+            "category": "mobile",
+            "technologies": ["Java", "Android"],
+            "icon": "🍺",
+            "image": "",
+            "url": "https://play.google.com/store/apps/details?id=dev.lampart.bartosz.brewingcalculator&hl=en&pli=1",
+            "featured": true
+        },
+        {
+            "id": "macbook-guide",
+            "name": {
+                "pl": "MacBook Guide",
+                "en": "MacBook Guide"
+            },
+            "description": {
+                "pl": "Przewodnik po MacBooku dla początkujących",
+                "en": "MacBook Guide for beginners"
+            },
+            "category": "web",
+            "technologies": ["HTML", "CSS", "JavaScript"],
+            "icon": "",
+            "image": "",
+            "url": "https://mac-book-guide.vercel.app",
+            "featured": true
+        },
+        {
+            "id": "guitar-chords-app",
+            "name": {
+                "pl": "Guitar Chords App",
+                "en": "Guitar Chords App"
+            },
+            "description": {
+                "pl": "Aplikacja do nauki akordów gitary",
+                "en": "Interactive guitar chord visualizer."
+            },
+            "category": "web",
+            "technologies": ["React", "Node", "HTML", "CSS", "JavaScript"],
+            "icon": "🎸",
+            "image": "",
+            "url": "https://chords-guitar.vercel.app",
+            "featured": true
+        },
+        {
+            "id": "bike-gear-ratio-visualizer",
+            "name": {
+                "pl": "Bike Gear Ratio Visualizer",
+                "en": "Bike Gear Ratio Visualizer"
+            },
+            "description": {
+                "pl": "Wizualizacja przełożeń rowerowych.",
+                "en": "Visualizer for bike gear ratios."
+            },
+            "category": "web",
+            "technologies": ["HTML", "CSS", "JavaScript"],
+            "icon": "🚲",
+            "image": "",
+            "url": "https://bike-gear-visual.vercel.app",
             "featured": true
         }
     ]
