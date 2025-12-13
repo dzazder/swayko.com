@@ -89,6 +89,20 @@ $products = json_decode(file_get_contents('data/products.json'), true)['products
                                 Zobacz projekt →
                             </a>
                         <?php endif; ?>
+                        <?php if (!empty($product['supportUrl']) || !empty($product['privacyPolicyUrl'])): ?>
+                        <div class="product-app-links">
+                            <?php if (!empty($product['supportUrl'])): ?>
+                                <a href="<?= htmlspecialchars($product['supportUrl']) ?>" class="product-app-link" target="_blank" rel="noopener" data-i18n="product.support">
+                                    Wsparcie
+                                </a>
+                            <?php endif; ?>
+                            <?php if (!empty($product['privacyPolicyUrl'])): ?>
+                                <a href="<?= htmlspecialchars($product['privacyPolicyUrl']) ?>" class="product-app-link" target="_blank" rel="noopener" data-i18n="product.privacyPolicy">
+                                    Polityka prywatności
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </article>
                 <?php endforeach; ?>

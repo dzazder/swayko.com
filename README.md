@@ -24,6 +24,17 @@ swayko.com/
 │   └── products-php.js # Logika strony produktów
 ├── data/
 │   └── products.json   # Dane produktów
+├── appstore/           # Strony wsparcia i polityki prywatności dla aplikacji iOS
+│   ├── MyWeightTracking/
+│   │   ├── support.html
+│   │   ├── support_pl.html
+│   │   ├── privacyPolicy.html
+│   │   └── privacyPolicy_pl.html
+│   └── BrewingCalculator/
+│       ├── support.html
+│       ├── support_pl.html
+│       ├── privacyPolicy.html
+│       └── privacyPolicy_pl.html
 └── README.md           # Ten plik
 ```
 
@@ -47,6 +58,8 @@ Aby dodać nowy produkt, edytuj plik `data/products.json`. Każdy produkt ma nas
     "icon": "📱",
     "image": "images/product-screenshot.jpg",
     "url": "https://example.com",
+    "supportUrl": "appstore/AppName/support.html",
+    "privacyPolicyUrl": "appstore/AppName/privacyPolicy.html",
     "featured": true
 }
 ```
@@ -63,6 +76,8 @@ Aby dodać nowy produkt, edytuj plik `data/products.json`. Każdy produkt ma nas
 | `icon` | string | Emoji ikona (wyświetlana gdy brak obrazka) |
 | `image` | string | Ścieżka do obrazka produktu (opcjonalne) |
 | `url` | string | Link do projektu/demo (opcjonalne) |
+| `supportUrl` | string | Link do strony wsparcia dla aplikacji iOS (opcjonalne) |
+| `privacyPolicyUrl` | string | Link do polityki prywatności dla aplikacji iOS (opcjonalne) |
 | `featured` | boolean | Czy wyświetlać na stronie głównej |
 
 ### Kategorie produktów:
@@ -71,6 +86,29 @@ Aby dodać nowy produkt, edytuj plik `data/products.json`. Każdy produkt ma nas
 - `web` - Aplikacje webowe
 - `cloud` - Rozwiązania chmurowe
 - `custom` - Dedykowane systemy (ERP, CRM, itp.)
+
+## 📱 Strony App Store (iOS)
+
+Dla aplikacji iOS wymagane są strony wsparcia i polityki prywatności. Znajdują się one w folderze `appstore/`.
+
+### Struktura dla nowej aplikacji:
+
+1. Utwórz folder z nazwą aplikacji w `appstore/`
+2. Dodaj 4 pliki HTML:
+   - `support.html` - strona wsparcia (EN)
+   - `support_pl.html` - strona wsparcia (PL)
+   - `privacyPolicy.html` - polityka prywatności (EN)
+   - `privacyPolicy_pl.html` - polityka prywatności (PL)
+
+3. Zaktualizuj `products.json`:
+```json
+{
+    "supportUrl": "appstore/NazwaAplikacji/support.html",
+    "privacyPolicyUrl": "appstore/NazwaAplikacji/privacyPolicy.html"
+}
+```
+
+Strony używają spójnego ciemnego motywu z kolorami akcentu dostosowanymi do charakteru aplikacji.
 
 ## 🖼️ Dodawanie obrazków produktów
 

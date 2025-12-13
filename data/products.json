@@ -14,7 +14,28 @@
             "technologies": ["Swift", "iOS"],
             "icon": "🏋️",
             "image": "",
+            "url": "https://apps.apple.com/na/app/my-weight-tracking/id6756206758",
+            "supportUrl": "appstore/MyWeightTracking/support.html",
+            "privacyPolicyUrl": "appstore/MyWeightTracking/privacyPolicy.html",
+            "featured": true
+        },
+        {
+            "id": "brewing-calculator-ios",
+            "name": {
+                "pl": "Kalkulator Piwowarski iOS",
+                "en": "Brewing Calculator iOS"
+            },
+            "description": {
+                "pl": "Zestaw kalkulatorów do piwowarstwa dla iOS.",
+                "en": "Set of calculators for brewing for iOS."
+            },
+            "category": "mobile",
+            "technologies": ["Swift", "iOS"],
+            "icon": "🍺",
+            "image": "",
             "url": "",
+            "supportUrl": "appstore/BrewingCalculator/support.html",
+            "privacyPolicyUrl": "appstore/BrewingCalculator/privacyPolicy.html",
             "featured": true
         },
         {

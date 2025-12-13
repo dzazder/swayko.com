@@ -66,7 +66,9 @@ const translations = {
         'products.cta.btn': 'Rozpocznij współpracę',
         
         // Product Card
-        'product.viewProject': 'Zobacz projekt →'
+        'product.viewProject': 'Zobacz projekt →',
+        'product.support': 'Wsparcie',
+        'product.privacyPolicy': 'Polityka prywatności'
     },
     en: {
         // Navigation
@@ -130,7 +132,9 @@ const translations = {
         'products.cta.btn': 'Start collaboration',
         
         // Product Card
-        'product.viewProject': 'View project →'
+        'product.viewProject': 'View project →',
+        'product.support': 'Support',
+        'product.privacyPolicy': 'Privacy Policy'
     }
 };
 
