@@ -30,7 +30,12 @@ swayko.com/
 │   │   ├── support_pl.html
 │   │   ├── privacyPolicy.html
 │   │   └── privacyPolicy_pl.html
-│   └── BrewingCalculator/
+│   ├── BrewingCalculator/
+│   │   ├── support.html
+│   │   ├── support_pl.html
+│   │   ├── privacyPolicy.html
+│   │   └── privacyPolicy_pl.html
+│   └── ClickGame/
 │       ├── support.html
 │       ├── support_pl.html
 │       ├── privacyPolicy.html
@@ -191,5 +196,5 @@ Strona jest w pełni responsywna:
 
 ## 📄 Licencja
 
-© 2024 SWAYKO. Wszelkie prawa zastrzeżone.
+© 2025 SWAYKO. Wszelkie prawa zastrzeżone.
 

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wsparcie - Click Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0a0a0b;
+            --color-bg-secondary: #111113;
+            --color-text: #f5f5f7;
+            --color-text-secondary: #8e8e93;
+            --color-accent: #ffd700;
+            --color-accent-secondary: #ff8c00;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --font-display: 'Syne', sans-serif;
+            --font-serif: 'Instrument Serif', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-display);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .app-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .lang-switch a {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--color-border);
+            border-radius: 2rem;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .lang-switch a:hover,
+        .lang-switch a.active {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .lang-switch a.active {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem;
+            color: var(--color-text);
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 2rem 0 0.75rem;
+            color: var(--color-accent);
+        }
+
+        p {
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            color: var(--color-text);
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        ul li, ol li {
+            color: var(--color-text-secondary);
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        ol {
+            counter-reset: item;
+        }
+
+        ol li::before {
+            content: counter(item) ".";
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--color-text);
+        }
+
+        .faq-item {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .faq-question::before {
+            content: 'P';
+            background: var(--color-accent);
+            color: var(--color-bg);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .faq-answer {
+            color: var(--color-text-secondary);
+            padding-left: 2.25rem;
+        }
+
+        .contact-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .contact-card h3 {
+            margin-top: 0;
+        }
+
+        .contact-email {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+            color: var(--color-bg);
+            text-decoration: none;
+            border-radius: 2rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .contact-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-name {
+            font-weight: 600;
+            color: var(--color-text);
+            font-size: 0.9rem;
+        }
+
+        .warning-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box p {
+            margin: 0;
+            color: var(--color-accent);
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="app-icon">🪙</div>
+            <h1>Wsparcie</h1>
+            <p class="subtitle">Click Game - Idle Clicker</p>
+            <div class="lang-switch">
+                <a href="support.html">🇬🇧 English</a>
+                <a href="support_pl.html" class="active">🇵🇱 Polski</a>
+            </div>
+        </header>
+
+        <main>
+            <div class="warning-box">
+                <p><strong>⚠️ Ważne:</strong> Wszystkie monety i waluta w tej grze są całkowicie wirtualne i nie mają wartości w świecie rzeczywistym. To darmowa gra bez reklam i zakupów w aplikacji.</p>
+            </div>
+
+            <h2>Funkcje Gry</h2>
+            <p>Click Game to relaksująca gra typu idle clicker, w której klikasz, aby zdobywać wirtualne monety, kupujesz ulepszenia i awansujesz po stałe bonusy.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👆</div>
+                    <div class="feature-name">Klikaj i Zdobywaj</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛒</div>
+                    <div class="feature-name">9 Ulepszeń</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <div class="feature-name">Prestiż</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-name">Osiągnięcia</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <div class="feature-name">Auto-Zapis</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <div class="feature-name">Zarobki Offline</div>
+                </div>
+            </div>
+
+            <h2>Jak Grać</h2>
+            
+            <ol>
+                <li><strong>Kliknij monetę</strong> — Każde kliknięcie daje Ci wirtualne monety</li>
+                <li><strong>Kup ulepszenia</strong> — Przesuń do zakładki Sklep i kup ulepszenia</li>
+                <li><strong>Zarabiaj pasywnie</strong> — Auto-clickery generują monety nawet gdy nie klikasz</li>
+                <li><strong>Prestiż</strong> — Przy 1M monet, awansuj po stałe bonusy +25%</li>
+                <li><strong>Powtarzaj!</strong> — Rozwijaj swoje imperium monet</li>
+            </ol>
+
+            <h2>Typy Ulepszeń</h2>
+
+            <h3>🔵 Siła Kliknięcia</h3>
+            <p>Zwiększa monety zdobywane za kliknięcie. Im więcej ulepszasz, tym więcej warte jest każde kliknięcie.</p>
+            <ul>
+                <li><strong>Lepszy Palec</strong> — +1 moneta za kliknięcie</li>
+                <li><strong>Złoty Dotyk</strong> — +5 monet za kliknięcie</li>
+                <li><strong>Diamentowe Ręce</strong> — +25 monet za kliknięcie</li>
+            </ul>
+
+            <h3>🟢 Auto-Clickery</h3>
+            <p>Generują monety automatycznie w czasie. Idealne do pasywnego dochodu!</p>
+            <ul>
+                <li><strong>Auto-Clicker</strong> — +0.5 monety/sekundę</li>
+                <li><strong>Fabryka Monet</strong> — +2 monety/sekundę</li>
+                <li><strong>Drukarka Pieniędzy</strong> — +10 monet/sekundę</li>
+                <li><strong>Kopalnia Krypto</strong> — +50 monet/sekundę</li>
+            </ul>
+
+            <h3>🔴 Mnożniki</h3>
+            <p>Mnożą siłę kliknięcia procentowo. Bardzo potężne na wysokich poziomach!</p>
+            <ul>
+                <li><strong>Mnożnik Kliknięć</strong> — +10% siły kliknięcia</li>
+                <li><strong>Mega Mnożnik</strong> — +25% siły kliknięcia</li>
+            </ul>
+
+            <h2>System Prestiżu</h2>
+            <div class="highlight-box">
+                <p>Gdy zarobisz 1 000 000 monet łącznie, możesz <strong>Awansować</strong>, aby zresetować postęp i zdobyć stałe bonusy!</p>
+            </div>
+            <ul>
+                <li>Każdy poziom prestiżu daje <strong>+25% do wszystkich zarobków</strong></li>
+                <li>Bonusy dotyczą zarówno kliknięć JAK I auto-clickerów</li>
+                <li>Im więcej monet przed prestiżem, tym więcej poziomów zdobędziesz</li>
+                <li>Poziomy prestiżu są stałe i nigdy się nie resetują</li>
+            </ul>
+
+            <h2>Często Zadawane Pytania</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">Czy ta gra jest naprawdę darmowa?</div>
+                <p class="faq-answer">Tak! Click Game jest w 100% darmowy, bez reklam i bez zakupów w aplikacji. Wszystkie funkcje są dostępne poprzez normalną rozgrywkę.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Czy mogę zarobić prawdziwe pieniądze w tej grze?</div>
+                <p class="faq-answer">Nie. Wszystkie monety i waluta w Click Game są całkowicie wirtualne i nie mają żadnej wartości pieniężnej w świecie rzeczywistym. Ta gra jest wyłącznie dla rozrywki.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Jak zapisać postęp?</div>
+                <p class="faq-answer">Twój postęp jest automatycznie zapisywany co 30 sekund. Nie musisz nic robić ręcznie!</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Czy zarabiam monety gdy aplikacja jest zamknięta?</div>
+                <p class="faq-answer">Tak! Twoje auto-clickery kontynuują pracę gdy Cię nie ma (do 8 godzin). Zobaczysz swoje zarobki offline gdy wrócisz.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Kiedy powinienem awansować?</div>
+                <p class="faq-answer">Im dłużej czekasz, tym więcej poziomów prestiżu zdobędziesz. Ale wcześniejszy awans pozwala szybciej korzystać z bonusów. To strategiczny wybór!</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Jak zresetować grę?</div>
+                <p class="faq-answer">Idź do zakładki Statystyki, przewiń w dół i dotknij "Reset Całego Postępu". Uwaga: To usuwa wszystko, łącznie z poziomami prestiżu!</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Czy mogę zsynchronizować postęp między urządzeniami?</div>
+                <p class="faq-answer">Obecnie dane gry są przechowywane tylko lokalnie na Twoim urządzeniu. Nie synchronizujemy z iCloud ani innymi usługami.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Czy moje dane są prywatne?</div>
+                <p class="faq-answer">Absolutnie! Nie zbieramy żadnych danych osobowych. Wszystko pozostaje na Twoim urządzeniu. Zobacz naszą <a href="privacyPolicy_pl.html">Politykę Prywatności</a> po szczegóły.</p>
+            </div>
+
+            <h2>Porady i Triki</h2>
+            <ul>
+                <li>Balansuj między siłą kliknięcia a auto-clickerami dla najlepszych wyników</li>
+                <li>Mnożniki stają się bardzo potężne na wyższych poziomach ulepszeń</li>
+                <li>Sprawdzaj grę po kilku godzinach, aby zebrać zarobki offline</li>
+                <li>Awansuj gdy postęp znacząco zwalnia</li>
+                <li>Osiągnięcia są tylko dla zabawy — nie dają bonusów</li>
+            </ul>
+
+            <h2>Skontaktuj się z Nami</h2>
+            <div class="contact-card">
+                <h3>Potrzebujesz więcej pomocy?</h3>
+                <p>Jeśli nie znalazłeś odpowiedzi na swoje pytanie lub chcesz zgłosić błąd, napisz do nas. Chętnie pomożemy!</p>
+                <a href="mailto:support@swayko.com" class="contact-email">support@swayko.com</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="privacyPolicy_pl.html">Polityka Prywatności</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 Swayko. Wszelkie prawa zastrzeżone.</p>
+        </footer>
+    </div>
+</body>
+</html>
+

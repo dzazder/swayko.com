@@ -142,7 +142,7 @@ $products = json_decode(file_get_contents('data/products.json'), true)['products
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2024 SWAYKO. <span data-i18n="footer.rights">Wszelkie prawa zastrzeżone.</span></p>
+            <p>© 2025 SWAYKO. <span data-i18n="footer.rights">Wszelkie prawa zastrzeżone.</span></p>
         </div>
     </footer>
 

@@ -39,6 +39,25 @@
             "featured": true
         },
         {
+            "id": "gold-money-click-game",
+            "name": {
+                "pl": "Gold Money Click Game",
+                "en": "Gold Money Click Game"
+            },
+            "description": {
+                "pl": "Wciągająca gra typu clicker - zbieraj złoto i rozwijaj swoje imperium!",
+                "en": "Addictive clicker game - collect gold and build your empire!"
+            },
+            "category": "mobile",
+            "technologies": ["Swift", "iOS"],
+            "icon": "💰",
+            "image": "",
+            "url": "",
+            "supportUrl": "appstore/ClickGame/support.html",
+            "privacyPolicyUrl": "appstore/ClickGame/privacyPolicy.html",
+            "featured": true
+        },
+        {
             "id": "brewing-calculator",
             "name": {
                 "pl": "Kalkulator Piwowarski",

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Click Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0a0a0b;
+            --color-bg-secondary: #111113;
+            --color-text: #f5f5f7;
+            --color-text-secondary: #8e8e93;
+            --color-accent: #ffd700;
+            --color-accent-secondary: #ff8c00;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --font-display: 'Syne', sans-serif;
+            --font-serif: 'Instrument Serif', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-display);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .app-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .lang-switch a {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--color-border);
+            border-radius: 2rem;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .lang-switch a:hover,
+        .lang-switch a.active {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .lang-switch a.active {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem;
+            color: var(--color-text);
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 2rem 0 0.75rem;
+            color: var(--color-accent);
+        }
+
+        p {
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            color: var(--color-text);
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        ul li, ol li {
+            color: var(--color-text-secondary);
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        ol {
+            counter-reset: item;
+        }
+
+        ol li::before {
+            content: counter(item) ".";
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--color-text);
+        }
+
+        .faq-item {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .faq-question::before {
+            content: 'Q';
+            background: var(--color-accent);
+            color: var(--color-bg);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .faq-answer {
+            color: var(--color-text-secondary);
+            padding-left: 2.25rem;
+        }
+
+        .contact-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .contact-card h3 {
+            margin-top: 0;
+        }
+
+        .contact-email {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+            color: var(--color-bg);
+            text-decoration: none;
+            border-radius: 2rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .contact-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-name {
+            font-weight: 600;
+            color: var(--color-text);
+            font-size: 0.9rem;
+        }
+
+        .warning-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box p {
+            margin: 0;
+            color: var(--color-accent);
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="app-icon">🪙</div>
+            <h1>Support</h1>
+            <p class="subtitle">Click Game - Idle Clicker</p>
+            <div class="lang-switch">
+                <a href="support.html" class="active">🇬🇧 English</a>
+                <a href="support_pl.html">🇵🇱 Polski</a>
+            </div>
+        </header>
+
+        <main>
+            <div class="warning-box">
+                <p><strong>⚠️ Important:</strong> All coins and currency in this game are purely virtual with no real-world value. This is a free game with no ads or in-app purchases.</p>
+            </div>
+
+            <h2>Game Features</h2>
+            <p>Click Game is a relaxing idle clicker where you tap to earn virtual coins, buy upgrades, and prestige for permanent bonuses.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👆</div>
+                    <div class="feature-name">Tap to Earn</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛒</div>
+                    <div class="feature-name">9 Upgrades</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <div class="feature-name">Prestige</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-name">Achievements</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <div class="feature-name">Auto-Save</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <div class="feature-name">Offline Earn</div>
+                </div>
+            </div>
+
+            <h2>How to Play</h2>
+            
+            <ol>
+                <li><strong>Tap the coin</strong> — Each tap earns you virtual coins</li>
+                <li><strong>Buy upgrades</strong> — Swipe to the Shop tab and purchase upgrades</li>
+                <li><strong>Earn passively</strong> — Auto clickers generate coins even when you're not tapping</li>
+                <li><strong>Prestige</strong> — At 1M coins, prestige for permanent +25% bonuses</li>
+                <li><strong>Repeat!</strong> — Keep growing your coin empire</li>
+            </ol>
+
+            <h2>Upgrade Types</h2>
+
+            <h3>🔵 Click Power</h3>
+            <p>Increases the coins you earn per tap. The more you upgrade, the more each click is worth.</p>
+            <ul>
+                <li><strong>Better Finger</strong> — +1 coin per click</li>
+                <li><strong>Golden Touch</strong> — +5 coins per click</li>
+                <li><strong>Diamond Hands</strong> — +25 coins per click</li>
+            </ul>
+
+            <h3>🟢 Auto Clickers</h3>
+            <p>Generates coins automatically over time. Perfect for passive income while you're away!</p>
+            <ul>
+                <li><strong>Auto Clicker</strong> — +0.5 coins/second</li>
+                <li><strong>Coin Factory</strong> — +2 coins/second</li>
+                <li><strong>Money Printer</strong> — +10 coins/second</li>
+                <li><strong>Crypto Mine</strong> — +50 coins/second</li>
+            </ul>
+
+            <h3>🔴 Multipliers</h3>
+            <p>Multiplies your click power by a percentage. Very powerful at high levels!</p>
+            <ul>
+                <li><strong>Click Multiplier</strong> — +10% click power</li>
+                <li><strong>Mega Multiplier</strong> — +25% click power</li>
+            </ul>
+
+            <h2>Prestige System</h2>
+            <div class="highlight-box">
+                <p>When you earn 1,000,000 total coins, you can <strong>Prestige</strong> to reset your progress and gain permanent bonuses!</p>
+            </div>
+            <ul>
+                <li>Each prestige level grants <strong>+25% to all earnings</strong></li>
+                <li>Bonuses apply to both clicks AND auto clickers</li>
+                <li>The more coins before prestige, the more levels you gain</li>
+                <li>Prestige levels are permanent and never reset</li>
+            </ul>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">Is this game really free?</div>
+                <p class="faq-answer">Yes! Click Game is 100% free with no ads and no in-app purchases. All features are available through normal gameplay.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I earn real money from this game?</div>
+                <p class="faq-answer">No. All coins and currency in Click Game are purely virtual and have no real-world monetary value. This game is for entertainment only.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I save my progress?</div>
+                <p class="faq-answer">Your progress is automatically saved every 30 seconds. You don't need to do anything manually!</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Do I earn coins while the app is closed?</div>
+                <p class="faq-answer">Yes! Your auto clickers continue working while you're away (up to 8 hours). You'll see your offline earnings when you return.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">When should I prestige?</div>
+                <p class="faq-answer">The longer you wait, the more prestige levels you gain. But prestiging earlier lets you benefit from bonuses sooner. It's a strategic choice!</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I reset my game?</div>
+                <p class="faq-answer">Go to Stats tab, scroll down, and tap "Reset All Progress". Warning: This deletes everything including prestige levels!</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I sync my progress across devices?</div>
+                <p class="faq-answer">Currently, game data is stored locally on your device only. We don't sync to iCloud or other services.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is my data private?</div>
+                <p class="faq-answer">Absolutely! We don't collect any personal data. Everything stays on your device. See our <a href="privacyPolicy.html">Privacy Policy</a> for details.</p>
+            </div>
+
+            <h2>Tips & Tricks</h2>
+            <ul>
+                <li>Balance between click power and auto clickers for best results</li>
+                <li>Multipliers become very powerful at higher upgrade levels</li>
+                <li>Check back after a few hours to collect offline earnings</li>
+                <li>Prestige when progress slows down significantly</li>
+                <li>Achievements are just for fun — they don't give bonuses</li>
+            </ul>
+
+            <h2>Contact Us</h2>
+            <div class="contact-card">
+                <h3>Need more help?</h3>
+                <p>If you couldn't find the answer to your question or want to report a bug, feel free to reach out. We're here to help!</p>
+                <a href="mailto:support@swayko.com" class="contact-email">support@swayko.com</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="privacyPolicy.html">Privacy Policy</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 Swayko. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
+
